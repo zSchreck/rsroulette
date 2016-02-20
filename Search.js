@@ -1,5 +1,5 @@
 /**
- * main serch engine
+ * main search engine
  */
 
 var Factual = require('factual-api');

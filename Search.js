@@ -1,7 +1,7 @@
 /**
  * main search engine
  */
-<script language="javascript" type="text/javascript" src="auth.js"></script>>
+
 var Factual = require('factual-api');
 var YOUR_KEY = "a9DtHbJ5UyLUua4umVtSAgQzwpd1ub8aeEBr2zhg";
 var YOUR_SECRET = 'sQbsWMHDMdhz9rMMlkJ3OtcoUnx91TuXiG5dDIKg';

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body>
+
+	<script type="text/javascript">
+		var theUrl = 'http://api.v3.factual.com/t/restaurants-us?filters=%7B%22postcode%22%3A%2250014%22%7D&include_count=true';
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", theUrl, false); // false for synchronous request
+		xmlHttp.setRequestHeader('KEY', 'a9DtHbJ5UyLUua4umVtSAgQzwpd1ub8aeEBr2zhg');
+		xmlHttp.send();
+		console.log(xmlHttp.responseText);
+	</script>
+
+
+</body>
+
+</html>

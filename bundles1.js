@@ -7,6 +7,74 @@
  var KEY = 'a9DtHbJ5UyLUua4umVtSAgQzwpd1ub8aeEBr2zhg'; 
 
  var SECRET = 'sQbsWMHDMdhz9rMMlkJ3OtcoUnx91TuXiG5dDIKg'; 
+ var Factual = require('factual-api');
+ var YOUR_KEY = "a9DtHbJ5UyLUua4umVtSAgQzwpd1ub8aeEBr2zhg";
+ var YOUR_SECRET = 'sQbsWMHDMdhz9rMMlkJ3OtcoUnx91TuXiG5dDIKg';
+ var ZIPCODE = '50014';
+ var factual = new Factual(YOUR_KEY, YOUR_SECRET);
+
+ factual.get('/t/places-us/schema', function(error, res) {
+ 	console.log(res.view);
+ });
+
+ //https:// www.factual.com/data/t/restaurants-us#filters={"$and":[{"postcode":{"$search":"50014"}}]}
+ factual.get('/t/restaurants-us?', {
+ 	filters : {
+ 		"$and" : [ {
+ 			"postcode" : {
+ 				"$search" : ZIPCODE
+ 			}
+ 		} ]
+ 	},
+ 	select : "contextname,factual_id"
+ }, function(error, res) {
+ 	console.log(res.data);
+ });
+ 
+ 
+
+ var Requester = require('./lib/requester');
+
+ var Factual = function(key, secret) {
+ 	this.requester = new Requester(key, secret);
+ };
+
+ Factual.prototype = {
+
+ 	startDebug : function() {
+ 		this.requester.startDebug();
+ 	},
+
+ 	stopDebug : function() {
+ 		this.requester.stopDebug();
+ 	},
+
+ 	setRequestTimeout : function() {
+ 		this.requester.setRequestTimeout(arguments[0]);
+ 	},
+
+ 	setBaseURI : function() {
+ 		this.requester.setBaseURI(arguments[0]);
+ 	},
+
+ 	get : function() {
+ 		return this.requester.get.apply(this.requester, arguments);
+ 	},
+
+ 	post : function() {
+ 		return this.requester.post.apply(this.requester, arguments);
+ 	},
+
+ 	requestUrl : function() {
+ 		return this.requester.url.apply(this.requester, arguments);
+ 	}
+
+ };
+
+ module.exports = Factual;
+
+ 
+ 
  
  module.exports = { 
    key: KEY, 

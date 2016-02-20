@@ -17,12 +17,17 @@
 
 
 
-<p id="demo"></p>
+	<script type="text/javascript">
+		var theUrl = 'http://api.v3.factual.com/t/restaurants-us?KEY=a9DtHbJ5UyLUua4umVtSAgQzwpd1ub8aeEBr2zhg&filters=%7B%22postcode%22%3A%2250014%22%7D&include_count=true';
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", theUrl, false); // false for synchronous request
+		xmlHttp.send();
+		var json = xmlHttp.responseText;
+		var parsed = JSON.parse(json);
+		var restaurant = parsed.response.data[0].name;
+		var location = parsed.response.data[0].address;
+	</script>
 
-<div>
-	<button class="alignCenter" type="button"
-		onclick="document.getElementById('demo').innerHTML = Date()">
-		Click me to display Date and Time.</button>
-</div>
+
 
 </html>

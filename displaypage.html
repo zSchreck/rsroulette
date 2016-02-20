@@ -11,10 +11,11 @@
 	<h2>Your random place to eat is....</h2>
 </div>
 
+
+
 </head>
 
-<script language="javascript" type="text/javascript" src="bundles1.js"></script>
-
+<body>
 
 
 	<script type="text/javascript">
@@ -24,10 +25,22 @@
 		xmlHttp.send();
 		var json = xmlHttp.responseText;
 		var parsed = JSON.parse(json);
-		var restaurant = parsed.response.data[0].name;
-		var location = parsed.response.data[0].address;
-	</script>
+		
+		var i = Math.floor((Math.random() * parseInt(parsed.response.total_row_count)) + 1);
+		
+		var restaurant = parsed.response.data[i].name;
+		var location = parsed.response.data[i].address;
+	    document.getElementById(".restaurant").innerHTML = "restaurant";
+	    document.getElementById(".address").innerHTML = location;
 
+	</script>1
+<div>
+	<p id="restaurant"></p>
+</div>
 
+<div> <p id="address"></p>
+</div>
+	
+	</body>
 
 </html>

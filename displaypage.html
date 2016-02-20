@@ -15,8 +15,11 @@
 
 </head>
 
-<body>
+<p  id="id01">
+</p>
 
+<p id="id02">
+</p>
 
 	<script type="text/javascript">
 		var theUrl = 'http://api.v3.factual.com/t/restaurants-us?KEY=a9DtHbJ5UyLUua4umVtSAgQzwpd1ub8aeEBr2zhg&filters=%7B%22postcode%22%3A%2250014%22%7D&include_count=true';
@@ -25,21 +28,20 @@
 		xmlHttp.send();
 		var json = xmlHttp.responseText;
 		var parsed = JSON.parse(json);
-		
-		var i = Math.floor((Math.random() * parseInt(parsed.response.total_row_count)) + 1);
-		
-		var restaurant = parsed.response.data[i].name;
-		var location = parsed.response.data[i].address;
-	    document.getElementById(".restaurant").innerHTML = "restaurant";
-	    document.getElementById(".address").innerHTML = location;
+		var j = parseInt(parsed.response.total_row_count);
+		var i = Math.floor((Math.random() * j ) + 1);
+	    document.getElementById("id01").innerHTML = parsed.response.data[i].name;
+	    document.getElementById("id02").innerHTML = parsed.response.data[i].address;
 
-	</script>1
-<div>
-	<p id="restaurant"></p>
-</div>
+	</script>
+	
 
-<div> <p id="address"></p>
-</div>
+<body>
+
+
+
+
+
 	
 	</body>
 

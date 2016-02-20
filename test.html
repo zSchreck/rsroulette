@@ -6,13 +6,23 @@
 
 <body>
 
+
+	<script type="text/javascript" src="xml2json.js"></script>
 	<script type="text/javascript">
 		var theUrl = 'http://api.v3.factual.com/t/restaurants-us?KEY=a9DtHbJ5UyLUua4umVtSAgQzwpd1ub8aeEBr2zhg&filters=%7B%22postcode%22%3A%2250014%22%7D&include_count=true';
 		var xmlHttp = new XMLHttpRequest();
 		xmlHttp.open("GET", theUrl, false); // false for synchronous request
 		xmlHttp.send();
-		console.log(xmlHttp.responseText);
+		console.log("made it");
+		var json = xmlHttp.responseText;
+		console.log(json);
+		var parsed = JSON.parse(json);
+		console.log(parsed);
+		var i = 0;
+		alert(parsed.response.data[i].name);
+		
 	</script>
+
 
 
 </body>

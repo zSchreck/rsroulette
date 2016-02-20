@@ -1,33 +1,38 @@
 /**
- * main serch engine 
- * */
+ * main serch engine
+ */
 
+var Factual = require('factual-api');
+var YOUR_KEY = 'a9DtHbJ5UyLUua4umVtSAgQzwpd1ub8aeEBr2zhg';
+var YOUR_SECRET = 'sQbsWMHDMdhz9rMMlkJ3OtcoUnx91TuXiG5dDIKg';
 
-var dist = DISTANCE;
-var zip = ZIPCODE;
-var keycode = "a9DtHbJ5UyLUua4umVtSAgQzwpd1ub8aeEBr2zhg";
+var factual = new Factual(YOUR_KEY, YOUR_SECRET);
 
-title = Factual ID   r0
-title = name   r1
-title = address;   r2
-title Address    r3
-title = locality (town/City)    r4
-title = Neighborhood    r5
-title = Region (State/Province)    r6
-title = Post Code     r7
-title hours of operations    r23
-title = hours (display)    r24
+factual.get('/t/places-us/schema', function(error, res) {
+	console.log(res.view);
+});
 
-
-
-{"Places":[
-              {"firstName":"John", "lastName":"Doe"},
-              {"firstName":"Anna", "lastName":"Smith"},
-              {"firstName":"Peter", "lastName":"Jones"}
-          ]}
-
-
-GET http://api.v3.factual.com/t/restaurants-us?geo={"$circle":{"$center":[34.06018, -118.41835],"$meters": 2500}}&KEY=keycode
-	
-	
-	
+// find California, USA
+factual.get('/t/world-geographies?', {
+	q : "los angeles",
+	filters : {
+		"$and" : [ {
+			"name" : {
+				"$eq" : "California"
+			}
+		}, {
+			"country" : {
+				"$eq" : "US"
+			}
+		}, {
+			"placetype" : {
+				"$eq" : "region"
+			}
+		} ]
+	},
+	select : "contextname,factual_id"
+}, function(error, res) {
+	console.log(res.data);
+});
+// returns 08649c86-8f76-11e1-848f-cfd5bf3ef515 as the Factual Id of
+// "California, US"

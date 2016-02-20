@@ -1,0 +1,26 @@
+@CHARSET "ISO-8859-1";
+
+
+h4{
+	color:red;
+	text-align: center;
+	font-family: 'Play', sans-serif;
+}
+
+h2{
+	text-align:center;
+	font-family: 'Play', sans-serif;
+}
+
+.topBorderStyle{
+	background-color:red;
+	color:black;
+	padding:5px;
+}
+
+.alignCenter{
+	text-align: center;
+}
+.imgSize{
+	width: 125px;
+}

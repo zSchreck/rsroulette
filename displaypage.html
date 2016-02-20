@@ -22,14 +22,20 @@
 </p>
 
 	<script type="text/javascript">
-		var theUrl = 'http://api.v3.factual.com/t/restaurants-us?KEY=JbtbCONKGmrrhdRCNc6LHZdOqsvMgjSWcNsP28Fq&filters=%7B%22postcode%22%3A%2250014%22%7D&include_count=true';
+		var zipCode = 50010;
+		var theUrl = 'http://api.v3.factual.com/t/restaurants-us?KEY=tlzdnWDyQXXvouypibNAtSfXxGWzTOlzVRq9pjPb&filters=%7B%22postcode%22%3A%22' + zipCode +'%22%7D&include_count=true&limit=50';
 		var xmlHttp = new XMLHttpRequest();
 		xmlHttp.open("GET", theUrl, false); // false for synchronous request
 		xmlHttp.send();
+		console.log(xmlHttp.responseText);
 		var json = xmlHttp.responseText;
 		var parsed = JSON.parse(json);
 		var j = parseInt(parsed.response.total_row_count);
+		if(j > 49){
+			j=49;
+		}
 		var i = Math.floor((Math.random() * j ) + 1);
+		console.log(i);
 	    document.getElementById("id01").innerHTML = parsed.response.data[i].name;
 	    document.getElementById("id02").innerHTML = parsed.response.data[i].address;
 

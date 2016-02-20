@@ -12,8 +12,7 @@ factual.get('/t/places-us/schema', function(error, res) {
 	console.log(res.view);
 });
 
-//
-https: // www.factual.com/data/t/restaurants-us#filters={"$and":[{"postcode":{"$search":"50014"}}]}
+//https:// www.factual.com/data/t/restaurants-us#filters={"$and":[{"postcode":{"$search":"50014"}}]}
 factual.get('/t/restaurants-us?', {
 	filters : {
 		"$and" : [ {

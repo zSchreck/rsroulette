@@ -15,40 +15,43 @@
 
 </head>
 
-<p  id="id01">
-</p>
+<p id="id01"></p>
+<p id="id02"></p>
+<p id="id03"></p>
+<p id="id04"></p>
+<p id="id05"></p>
 
-<p id="id02">
-</p>
 
-	<script type="text/javascript">
-		var zipCode = 50010;
-		var theUrl = 'http://api.v3.factual.com/t/restaurants-us?KEY=tlzdnWDyQXXvouypibNAtSfXxGWzTOlzVRq9pjPb&filters=%7B%22postcode%22%3A%22' + zipCode +'%22%7D&include_count=true&limit=50';
-		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.open("GET", theUrl, false); // false for synchronous request
-		xmlHttp.send();
-		console.log(xmlHttp.responseText);
-		var json = xmlHttp.responseText;
-		var parsed = JSON.parse(json);
-		var j = parseInt(parsed.response.total_row_count);
-		if(j > 49){
-			j=49;
-		}
-		var i = Math.floor((Math.random() * j ) + 1);
-		console.log(i);
-	    document.getElementById("id01").innerHTML = parsed.response.data[i].name;
-	    document.getElementById("id02").innerHTML = parsed.response.data[i].address;
+<script type="text/javascript">
+	var zipCode = 50010;
+	var theUrl = 'http://api.v3.factual.com/t/restaurants-us?KEY=tlzdnWDyQXXvouypibNAtSfXxGWzTOlzVRq9pjPb&filters=%7B%22postcode%22%3A%22'
+			+ zipCode + '%22%7D&include_count=true&limit=50';
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open("GET", theUrl, false); // false for synchronous request
+	xmlHttp.send();
+	console.log(xmlHttp.responseText);
+	var json = xmlHttp.responseText;
+	var parsed = JSON.parse(json);
+	var j = parseInt(parsed.response.total_row_count);
+	if (j > 49) {
+		j = 49;
+	}
+	var i = Math.floor((Math.random() * j) + 1);
+	document.getElementById("id01").innerHTML = parsed.response.data[i].name;
+	document.getElementById("id02").innerHTML = parsed.response.data[i].address;
+	document.getElementById("id03").innerHTML = parsed.response.data[i].locality;
+	document.getElementById("id04").innerHTML = parsed.response.data[i].region;
+	document.getElementById("id05").innerHTML = parsed.response.data[i].hours_display;
+</script>
 
-	</script>
-	
 
 <body>
+	<div class="alignCenter topPad">
 
+		<img class="imgSize" src="smoking.png" />
 
+	</div>
 
-
-
-	
-	</body>
+</body>
 
 </html>

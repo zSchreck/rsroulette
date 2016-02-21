@@ -2,54 +2,45 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-	
-	<link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="homepageStyles.css">
+
+<link href='https://fonts.googleapis.com/css?family=Play'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="homepageStyles.css">
 <title>Restaurant Roulette</title>
 
 <div class="topBorderStyle">
-<h2>
-This is restaurant roulette!
-</h2>
+	<h2>This is restaurant roulette!</h2>
 </div>
 
 <div>
-<p>
-Click on the revolver to load a random place to eat within the given distance.
-</p>
+	<p>Click on the revolver to load a random place to eat within the
+		given distance.</p>
 </div>
 
 </head>
 
 <body>
 
-<div>
-<p>Please select a distance to find somewhere to eat within!
-</p>
-<form class="alignCenter">
-	<input type="radio" name="distance" value="5" checked>5 miles<br>
-	<input type="radio" name="distance" value="10">10 miles<br>
-	<input type="radio" name="distance" value="25">25 miles<br>
-	<input type="radio" name="distance" value="50">50 miles
-</form>
-</div>
+	<div>
+		<p>Please select a distance to find somewhere to eat within!</p>
+		<form class="alignCenter">
+			<input type="radio" name="distance" value="5" checked>5 miles<br>
+			<input type="radio" name="distance" value="10">10 miles<br>
+			<input type="radio" name="distance" value="25">25 miles<br>
+			<input type="radio" name="distance" value="50">50 miles
+		</form>
+	</div>
 
-<div class="alignCenter topPad">
-<a href="displaypage.html?pass=" + Zipcode><img class="imgSize" src="gun.jpg"/>
-</a>
-</div>
+	<div>
+		<p>Please enter the ZIP code to search for.</p>
+	</div>
 
-
-<div>
-<p>
-Please enter the ZIP code to search for.</p>
-</div>
-
-<form class="alignCenter">
-
-Zipcode:
-<input type="number" name="Zipcode" value ="Submit form" ><br>
-</form>
+	<form class="alignCenter" action="displaypage.html">
+		<div class="alignCenter">
+			<input type="image" class="imgSize" src="gun.jpg" alt="submit"><br>
+		</div>
+		zipcode: <input type="number" id="userInput" name="Zipcode">
+	</form>
 
 </body>
 </html>
